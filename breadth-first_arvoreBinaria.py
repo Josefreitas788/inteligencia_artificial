@@ -1,5 +1,6 @@
 from tree import drawTree #This library will only be used to draw the binary tree on the screen
 import random as rd
+
 class Node:
   def __init__(self, value, left=None, right=None):
     self.value = value
