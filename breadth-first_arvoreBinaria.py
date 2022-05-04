@@ -25,7 +25,7 @@ lista = f.read()
 lista = lista.split(',')
 #lista = [list(row) for row in lista.columns]
 print(lista)
-tree = Node(0)
+tree = Node("Brasil")
 for cidade in lista:
     tree.insert(cidade)
 
