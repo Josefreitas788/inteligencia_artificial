@@ -1,26 +1,38 @@
-import drawtree as dr
-
-
+from tree import drawTree #This library will only be used to draw the binary tree on the screen
+import random as rd
 class Node:
   def __init__(self, value, left=None, right=None):
     self.value = value
     self.left = left
     self.right = right
+  
+  def insert(self, value):
+        x = rd.randint(0,1)
+        if x == 0:
+            if self.left is None:
+               self.left = Node(value)
+            else:
+               self.left.insert(value)
+        else:
+               if self.right is None:
+                  self.right = Node(value)
+               else:
+                  self.right.insert(value)
 
-tree = Node(47) #The root node of our binary tree
-tree.left = Node(36)
-tree.right = Node(66)
 
-tree.left.left = Node(25)
-tree.left.right = Node(39)
-tree.left.right.left = Node(38)
-tree.left.right.right = Node(42)
+f =  open('cidades.txt')
+lista = f.read()
+lista = lista.split(',')
+#lista = [list(row) for row in lista.columns]
+print(lista)
+tree = Node(0)
+for cidade in lista:
+    tree.insert(cidade)
 
-tree.right.left = Node(63)
-tree.right.left.right = Node(64)
-tree.right.right = Node(68)
+    
 
-#dr.draw_level_order(tree)
+
+drawTree(tree)
 
 #---> Implementation of the Breadth-First Traversal:
 
@@ -46,10 +58,9 @@ while len(queue)!=0:
 #The end, let's print the list of values resulting from the breadth first traversal of our tree:
 print(values)
 
-value = int(input("Type a value to search for..."))
+value = input("Type a value to search for...")
 
-#Binary Search...
-node = tree
+#TODO busca cega 
 found=False
 while node!=None:
   if value==node.value:
