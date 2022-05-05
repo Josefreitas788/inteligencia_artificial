@@ -3,23 +3,23 @@ import random as rd
 
 class Node:
 
-  def __init__(self, value, left=None, right=None):
-    self.value = value
+  def __init__(self, nome, left=None, right=None):
+    self.nome = nome
     self.left = left
     self.right = right
   
-  def insert(self, value):
+  def insert(self, nome):
         x = rd.randint(0,1)
         if x == 0:
             if self.left is None:
-               self.left = Node(value)
+               self.left = Node(nome)
             else:
-               self.left.insert(value)
+               self.left.insert(nome)
         else:
                if self.right is None:
-                  self.right = Node(value)
+                  self.right = Node(nome)
                else:
-                  self.right.insert(value)
+                  self.right.insert(nome)
 
 f =  open('cidades.txt')
 lista = f.read()
@@ -42,8 +42,8 @@ nomes = []
 
 while len(queue)!=0:
   currentNode = queue.pop(0)
-  nomes.append(currentNode.value)
-  if currentNode.value == nome:
+  nomes.append(currentNode.nome)
+  if currentNode.nome == nome:
       print("Nome endcontrado!")
       break
       
