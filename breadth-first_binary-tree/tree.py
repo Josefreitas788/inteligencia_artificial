@@ -45,7 +45,7 @@ def build_ascii_tree_recursive(t):
     if node.right:
         node.right.parent_dir = 1
 
-    node.label = '{}'.format(t.value)
+    node.label = '{}'.format(t.nome)
     node.lablen = len(node.label)
     return node
 

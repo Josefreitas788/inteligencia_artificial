@@ -44,7 +44,8 @@ while len(queue)!=0:
   currentNode = queue.pop(0)
   nomes.append(currentNode.nome)
   if currentNode.nome == nome:
-      print("Nome endcontrado!")
+      print("Nome encontrado!")
+      queue.append("")
       break
       
   if currentNode.left!=None:
