@@ -41,17 +41,16 @@ queue = [tree]
 nomes = []
 
 while len(queue)!=0:
-  currentNode = queue.pop(0)
-  nomes.append(currentNode.nome)
-  if currentNode.nome == nome:
+  NoAtual = queue.pop(0)
+  nomes.append(NoAtual.nome)
+  if Atual.nome == nome:
       print("Nome encontrado!")
       queue.append("")
-      break
-      
-  if currentNode.left!=None:
-    queue.append(currentNode.left)
-  if currentNode.right!=None:
-    queue.append(currentNode.right)
+      break   
+  if NoAtual.left!=None:
+    queue.append(NoAtual.left)
+  if NoAtual.right!=None:
+    queue.append(NoAtual.right)
 if len(queue) == 0:
     print("O nome não foi encontrado")
 
