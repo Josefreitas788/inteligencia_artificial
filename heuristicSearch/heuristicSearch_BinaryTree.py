@@ -3,10 +3,13 @@ import random as rd
 
 class Node:
 
-z
+  def __init__(self, nome, left=None, right=None):
+    #TODO 
+    '''Para a pesquisa heuristica é preciso é preciso subtrair a distancia percorrida pela distancia pelo distancia que falta e escolher o menor valor'''
+    self.nome = nome
     self.left = left
     self.right = right
-  
+
   def insert(self, nome):
         x = rd.randint(0,1)
         if x == 0:
