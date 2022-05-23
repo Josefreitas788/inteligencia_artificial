@@ -14,18 +14,6 @@ class Node:
     self.distanciaBeta = distanciaBeta
     self.distanciaZulu = distanciaZulu
 
-  def insert(self, nome):
-        x = rd.randint(0,1)
-        if x == 0:
-            if self.left is None:
-               self.left = Node(nome)
-            else:
-               self.left.insert(nome)
-        else:
-               if self.right is None:
-                  self.right = Node(nome)
-               else:
-                  self.right.insert(nome)
 
 
 noTaguatinga = Node('Taguatinga',50,60,90)
