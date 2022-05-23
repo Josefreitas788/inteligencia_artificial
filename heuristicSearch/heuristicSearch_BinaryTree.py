@@ -37,6 +37,7 @@ nome = input("Digite um nome:")
 #Busca em largura
 queue = [tree]
 nomes = []
+distância_percorrida = 0
 
 while len(queue)!=0:
   NoAtual = queue.pop(0)
