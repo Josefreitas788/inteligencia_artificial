@@ -1,6 +1,3 @@
-from tree import drawTree 
-import random as rd
-
 class Node:
 
   def __init__(self, nome, distanciaAlfa, distanciaBeta, distanciaZulu ,alfa=None, beta=None, zulu=None):
@@ -21,36 +18,64 @@ noTaguatinga.vizinhoAlfa = Node('Ceilandia',50,70,100)
 noTaguatinga.vizinhoBeta = Node('Aguas Claras',90,60,132)
 
 noCeilandia = noTaguatinga.vizinhoAlfa
-noCeialndia.vizinhoAlfa = noTaguatinga
-noCeilandia.vizinhoBeta = Node('Samambaia',32,70,83)
+noCeilandia.vizinhoAlfa = noTaguatinga
+noCeilandia.vizinhoBeta = Node('Samambaia',32,70,90)
 
 noSamambaia = noCeilandia.vizinhoBeta
-noSamambaia.vizinhoAlfa = no
-for cidade in lista:
-      tree.insert(cidade)
-      
+noSamambaia.vizinhoAlfa = noCeilandia
+noSamambaia.vizinhoBeta = Node('Recanto das Emas',32,53,90)
+noSamambaia.vizinhoZulu = noTaguatinga
 
-drawTree(tree)
+noTaguatinga.vizinhoZulu = noSamambaia
 
-nome = input("Digite um nome:")
+noRecanto = noSamambaia.vizinhoBeta
+noRecanto.vizinhoAlfa = noSamambaia
+noRecanto.vizinhoBeta = Node('Guara',53,56,57)
 
+noGuara = noRecanto.vizinhoBeta
+noGuara.vizinhoAlfa = noRecanto
+noGuara.vizinhoBeta = Node('Bandeirante',90,56,40)
+
+noAguasclaras = noTaguatinga.vizinhoBeta
+noAguasclaras.vizinhoAlfa = noGuara.vizinhoBeta
+noAguasclaras.vizinhoBeta = noTaguatinga
+
+
+noBandeirante = noAguasclaras.vizinhoAlfa
+
+pesoEuristico = {'Ceilandia':200,'Taguatinga':180,'Samambaia':170,'Recanto das Emas':160,'Aguas Claras': 150,'Guara':100,'Bandeirante':0}
+
+input("A cidade procurada será o Bandeirando a partir da Ceilandia: ")
+nome = 'Bandeirante'
 #Busca em largura
-queue = [tree]
+queue = [noCeilandia]
 nomes = []
-distância_percorrida = 0
+distancia_percorrida = 0
 
 while len(queue)!=0:
-  NoAtual = queue.pop(0)
-  nomes.append(NoAtual.nome)
-  if Atual.nome == nome:
+  noAtual = queue.pop(0)
+  print(noAtual.nome)
+  nomes.append(noAtual.nome)
+  if noAtual.nome == nome:
       print("Nome encontrado!")
       queue.append("")
       break   
-  if NoAtual.left!=None:
-    queue.append(NoAtual.left)
-  if NoAtual.right!=None:
-    queue.append(NoAtual.right)
-if len(queue) == 0:
+    
+  #Pesquisa euristica
+  zulu = 9999999
+  alfa = noAtual.distanciaAlfa + distancia_percorrida + pesoEuristico[noAtual.vizinhoAlfa.nome]
+  beta = noAtual.distanciaBeta + distancia_percorrida + pesoEuristico[noAtual.vizinhoBeta.nome]
+  if noAtual.vizinhoZulu != None:
+    zulu = noAtual.distanciaZulu + distancia_percorrida + pesoEuristico[noAtual.vizinhoZulu.nome]
+
+  x = min(alfa,beta,zulu)
+  if x == alfa:
+      queue.append(noAtual.vizinhoAlfa)
+  elif x == beta:
+      queue.append(noAtual.vizinhoBeta)
+  elif x == zulu:
+      queue.append(noAtual.vizinhoZulu)
+  if len(queue) == 0:
     print("O nome não foi encontrado")
 
 print("Os valores percorridos foram:{}".format(nomes))
