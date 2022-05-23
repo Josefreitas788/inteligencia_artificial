@@ -3,12 +3,16 @@ import random as rd
 
 class Node:
 
-  def __init__(self, nome, left=None, right=None):
+  def __init__(self, nome, distanciaAlfa, distanciaBeta, distanciaZulu ,alfa=None, beta=None, zulu=None):
     #TODO 
     '''Para a pesquisa heuristica é preciso é preciso subtrair a distancia percorrida pela distancia pelo distancia que falta e escolher o menor valor'''
     self.nome = nome
-    self.left = left
-    self.right = right
+    self.vizinhoAlfa = alfa
+    self.vizinhoBeta = beta
+    self.vizinhoZulu = alfa
+    self.distanciaAlfa = distanciaAlfa
+    self.distanciaBeta = distanciaBeta
+    self.distanciaZulu = distanciaZulu
 
   def insert(self, nome):
         x = rd.randint(0,1)
@@ -23,13 +27,17 @@ class Node:
                else:
                   self.right.insert(nome)
 
-f =  open('cidades.txt')
-lista = f.read()
-lista = lista.split(',')
-lista.pop()
-#lista = [list(row) for row in lista.columns]
-print(lista)
-tree = Node('Brasil')
+
+noTaguatinga = Node('Taguatinga',50,60,90)
+noTaguatinga.vizinhoAlfa = Node('Ceilandia',50,70,100)
+noTaguatinga.vizinhoBeta = Node('Aguas Claras',90,60,132)
+
+noCeilandia = noTaguatinga.vizinhoAlfa
+noCeialndia.vizinhoAlfa = noTaguatinga
+noCeilandia.vizinhoBeta = Node('Samambaia',32,70,83)
+
+noSamambaia = noCeilandia.vizinhoBeta
+noSamambaia.vizinhoAlfa = no
 for cidade in lista:
       tree.insert(cidade)
       
