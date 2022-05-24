@@ -6,7 +6,7 @@ class Node:
     self.nome = nome
     self.vizinhoAlfa = alfa
     self.vizinhoBeta = beta
-    self.vizinhoZulu = alfa
+    self.vizinhoZulu = zulu
     self.distanciaAlfa = distanciaAlfa
     self.distanciaBeta = distanciaBeta
     self.distanciaZulu = distanciaZulu
