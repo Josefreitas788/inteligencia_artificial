@@ -71,10 +71,13 @@ while len(queue)!=0:
   x = min(alfa,beta,zulu)
   if x == alfa:
       queue.append(noAtual.vizinhoAlfa)
+      distancia_percorrida = noAtual.distanciaAlfa + distancia_percorrida
   elif x == beta:
       queue.append(noAtual.vizinhoBeta)
+      distancia_percorrida = noAtual.distanciaBeta + distancia_percorrida
   elif x == zulu:
       queue.append(noAtual.vizinhoZulu)
+      distancia_percorrida = noAtual.distanciaZulu + distancia_percorrida
   if len(queue) == 0:
     print("O nome não foi encontrado")
 
